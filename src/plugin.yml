@@ -1,0 +1,105 @@
+name: MoreCommands
+version: 2.4
+api-version: 1.16
+author: LeSaR_
+main: me.LeSaR.morecommands.Main
+description: My own morecommands plugin!
+
+commands:
+  gmc:
+    aliases: [creative]
+    description: /gmc or /creative to change gamemode to creative
+    usage: /<command> [player]
+    permission: minecraft.command.gamemode
+    permission-message: You have no permission!
+  gms:
+    aliases: [survival]
+    description: /gms or /survival to change gamemode to survival
+    usage: /<command> [player]
+    permission: minecraft.command.gamemode
+    permission-message: You have no permission!
+  
+  spawn:
+    description: /spawn to go to spawn
+    usage: /<command>
+    permission: minecraft.command.tp
+    permission-message: You have no permission!
+  nether:
+    description: /nether to go to nether spawn
+    usage: /<command>
+    permission: minecraft.command.tp
+    permission-message: You have no permission!
+  overworld:
+    description: /overworld to go to overworld spawn
+    usage: /<command>
+    permission: minecraft.command.tp
+    permission-message: You have no permission!
+  end:
+    description: /end to go to end spawn
+    usage: /<command>
+    permission: minecraft.command.tp
+    permission-message: You have no permission!
+  
+  broadcast:
+    aliases: [bc, br]
+    description: /broadcast to broadcast a message to the server (& + key to use color codes)
+    usage: /<command>
+    permission: server.broadcast.use
+    permission-message: You have no permission!
+    
+  echest:
+    description: /echest to open ender chest of player (or theirs)
+    usage: /<command> [player]
+    permission: server.players.view
+    permission-message: You have no permission!
+  
+  vanish:
+    aliases: v
+    description: /vanish to become fully invisible
+    usage: /<command> [player]
+    permission: server.players.vanish
+    permission-message: You have no permission!
+  
+  timer:
+    aliases: t
+    description: /timer to set a private timer
+    usage: /<command> <seconds>
+  bctimer:
+    aliases: bct
+    description: /timer to set a public timer
+    usage: /<command> <seconds>
+    permission: server.broadcast.use
+    permission-message: You have no permission!
+  
+  sudo:
+    alases: as
+    description: /sudo to enter a chat message as a player
+    usage: /<command> <player> <message>
+    permission: server.players.sudo
+    permission-message: You have no permission!
+
+permissions:
+  server.broadcast.*:
+    description: Permission to broadcast
+    default: op
+    children:
+      - server.broadcast.use
+  server.plugins.*:
+    description: Permission to manage plugins
+    default: op
+    children:
+      - server.plugins.manage
+  server.*:
+    decription: Permission to manage server
+    default: op
+    children:
+    - server.players.*:
+      description: Permission to manage players
+      default: op
+      children:
+      - server.players.manage
+      - server.players.sudo
+      - server.players.list
+      - server.players.view
+      - server.players.vanish
+      - server.players.seevanished
